@@ -1,27 +1,18 @@
-var players = createPlayer()
-console.log(players)
+var player1 = createPlayer('Human', '🧑', 0 )
+var player2 = createPlayer('Computer', '💻', 0)
 
-function createPlayer(){
-  //will always be player1s turn first 
-  var playerData = [
-    {
-    name:'Human' , 
-    token:'🧑' , 
-    wins:0 
-    }, 
-    {
-    name: 'Computer', 
-    token:'💻' , 
-    wins:0
-  }];
-  
-return playerData
+function createPlayer (name, token, wins){
+  var player = {
+    name: name,
+    token: token,
+    wins: wins 
+  }
+  console.log(player)
+  return player
 }
-createPlayer()
 
-function createGame(players) {
-  console.log(players[0].name)
+function createGame(player1, player2) {
+console.log(player1.name)
 }
-createGame(players)
 
-
+createGame(player1, player2)
