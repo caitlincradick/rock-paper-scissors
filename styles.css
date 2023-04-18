@@ -1,0 +1,74 @@
+*{
+  font-family: 'Sedgwick Ave Display', cursive;
+  color:black;
+  font-weight: 50;
+  box-sizing: border-box;
+  /* border:solid black 3px */
+  }
+
+ /* COLORS
+background: #1c1124; black 
+background: #693e52; maroon
+background: #74b49b; light green
+background: #a7d7c5; ligther green */
+
+/*GENERAL*/
+body{
+  margin: 0%
+}
+
+main {
+  display: flex;
+}
+
+.left-player, .right-player {
+  display: flex;
+  flex-direction: column;
+  justify-content:flex-start;
+  align-items: center;
+  background-color:#a7d7c5;  
+  height: 100vh;
+  width: 20%;
+}
+
+/*HEADERS*/
+.player-names, .game-status {
+  font-size: 30px;
+  margin-top: 0;
+  color:white
+}
+
+.wins {
+  font-size: 20px;
+  margin-top:0;
+  color:maroon;
+}
+
+.game-board-heading{
+  font-size: 50px;
+  color:maroon;
+  margin-bottom: 2px;
+}
+
+
+
+/*GAME BOARD*/
+.game-board {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #74b49b;;
+  height:100vh; 
+  width: 60%;
+}
+
+/*PLAYERS */
+.player-token {
+  height: 50px;
+  width: 50px;
+  font-size: 43px;
+}
+
+
+
+
