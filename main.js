@@ -1,6 +1,9 @@
+var players = createPlayer()
+console.log(players)
+
 function createPlayer(){
-  //will always be player1s turn
-  var players = [
+  //will always be player1s turn first 
+  var playerData = [
     {
     name:'Human' , 
     token:'🧑' , 
@@ -10,10 +13,15 @@ function createPlayer(){
     name: 'Computer', 
     token:'💻' , 
     wins:0
-  }]
-return players 
+  }];
+  
+return playerData
 }
+createPlayer()
 
 function createGame(players) {
-console.log(players[0].name)
+  console.log(players[0].name)
 }
+createGame(players)
+
+
