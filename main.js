@@ -1,6 +1,5 @@
-var player1 = createPlayer('Human', '🧑')
-var player2 = createPlayer('Computer', '💻')
-var gameType= [{name:'classic',icons: 3, winConditions:[]},{name:'classic',icons: 5, winConditions:[]}];
+var gameData = [];
+
 
 function createPlayer (name, token){
   var player = {
@@ -8,19 +7,26 @@ function createPlayer (name, token){
     token: token,
     wins: 0 
   }
-  console.log(player)
+  // console.log(player)
   return player
 }
 
-function createGame(player1, player2, gameType) {
+createPlayer('Human', '🧑')
+createPlayer('Computer', '💻')
+
+function createGame(gameData) {
+var player1 = createPlayer('Human', '🧑')
+var player2 = createPlayer('Computer', '💻')
+var gameType= [{name:'classic',icons: 3, winConditions:[]},    
+    {name:'classic',icons: 5, winConditions:[]}];
   var game = {
-    player1: player1, 
-    player2: player2, 
+    player1:player1, 
+    player2:player2, 
     gameType:gameType, 
-    data: []  
+    data: gameData
   }
-   console.log(game)
-   return game 
- }
- 
- createGame(player1, player2, gameType)
+  console.log(game)
+}
+  
+ createGame(gameData)
+
