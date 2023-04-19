@@ -1,5 +1,5 @@
+var icons = ['assets/black-and-white-rocks.png', 'assets/black-and-white-scissors.png', 'assets/black-and-white-paper.png', 'assets/black-and-white-alien.png', 'assets/favpng_salamander-lizard-clip-art.png'];
 var gameData = [];
-
 
 function createPlayer (name, token){
   var player = {
@@ -11,11 +11,11 @@ function createPlayer (name, token){
   return player
 }
 
-createPlayer('Human', '🧑')
+createPlayer('Human', '🫠')
 createPlayer('Computer', '💻')
 
 function createGame(gameData) {
-var player1 = createPlayer('Human', '🧑')
+var player1 = createPlayer('Human', '🫠')
 var player2 = createPlayer('Computer', '💻')
 var gameType= [{name:'classic',icons: 3, winConditions:[]},    
     {name:'classic',icons: 5, winConditions:[]}];
