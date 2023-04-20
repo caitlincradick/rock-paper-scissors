@@ -1,11 +1,9 @@
-
-//RETURNS BITTTTCH 
+//RETURNS BIIIIIITTTTCH 
 var classicIcons = ['rock', 'paper', 'scissors']
 var difficultIcons = ['rock', 'paper', 'scissors', 'alien', 'lizard']
 var gameBoardChoices = [];
 var currentGame;
 var humanChoice;
-
 
 function createPlayer (name, token){
   var player = {
@@ -15,16 +13,15 @@ function createPlayer (name, token){
   }
   return player
 }
-
-createPlayer('Human', '🫠')
-createPlayer('Computer', '💻')
+// createPlayer('Human', '🫠')
+// createPlayer('Computer', '💻')
 
 //will only call once on page load 
 function createGame(gameBoardChoices){
 var player1 = createPlayer('Human', '🫠')
 var player2 = createPlayer('Computer', '💻')
-var gameType= [{name:'classic', winConditions:[]},    
-              {name:'difficult', winConditions:[]}];
+var gameType= [{name:'classic'},    
+              {name:'difficult'}];
   var game = {
     player1:player1, 
     player2:player2, 
@@ -36,6 +33,24 @@ var gameType= [{name:'classic', winConditions:[]},
 }  
 createGame(gameBoardChoices)
 
+
+function determineGameType(currentGame){
+  var currentType = ''
+  for(var i = 0; i < currentGame.gameType.length; i++){
+    currentType = currentGame.gameType[i].name 
+    console.log('current type', currentType)
+    if(currentGame.gameType[i].name === 'classic') {
+      console.log('hello')
+      // takeTurnClassic('rock', classicIcons)
+      // this is where i'd update the name
+      // determineClassicWins(classicRules)
+    } else {
+      // takeTurnDifficult('alien', difficultIcons)
+      console.log('sup')
+      // determineDifficultWins(difficultRules)
+    }
+  }
+}
 
 function getRandomIndex(iconArrays){
   return Math.floor(Math.random() * iconArrays.length);
@@ -69,23 +84,8 @@ function takeTurnDifficult(humanChoice, difficultIcons) {
     return players 
   }
   
-
-
-var classicRules = [ {
-  'rock > scissors':true,
-  'scissors > rock':false, 
-  'paper > rock':true, 
-  'rock > paper':false,
-  'scissors > paper':true,
-  'paper > scissors':false  
- }];
-
-
- 
-
 function determineClassicWins(classicRules){
   //check lines 39 and 51 to see if that's why it's clearing
-  
   console.log(gameBoardChoices)
   for(var i = 0; i < classicRules.length; i++){
     if(classicRules[i][`${gameBoardChoices[0]} > ${gameBoardChoices[1]}`]){
@@ -102,29 +102,6 @@ gameBoardChoices = []
 createPlayer('Human', '🫠')
 createPlayer('Computer', '💻')
 }
-
-var difficultRules = [{
-  'rock > scissors':true,
-  'scissors > rock':false, 
-  'paper > rock':true, 
-  'rock > paper':false,
-  'scissors > paper':true,
-  'paper > scissors':false, 
-  'rock > lizard': true, 
-  'lizard > rock': false, 
-  'paper > alien': true, 
-  'alien > paper': false, 
-  'scissors > lizard': true, 
-  'lizard > scissors':false, 
-  'lizard > paper': true, 
-  'paper > lizard': false, 
-  'lizard > alien': true, 
-  'alien > lizard': false, 
-  'alien > scissors': true, 
-  'scissors > alien': false, 
-  'alien > rock': true, 
-  'rock > alien' : false 
- }];
 
 function determineDifficultWins(difficultRules){
   for(var i = 0; i < difficultRules.length; i++){
@@ -143,7 +120,3 @@ createPlayer('Human', '🫠')
 createPlayer('Computer', '💻')
 }
 
-
-
-
-// function classicGame(humanChoice, computerIconArray)
