@@ -1,11 +1,13 @@
-//RETURNS BIIIIIITTTTCH 
+//GLOBAL VARIABLES
 var classicIcons = ['rock', 'paper', 'scissors']
 var difficultIcons = ['rock', 'paper', 'scissors', 'alien', 'lizard']
 var gameBoardChoices = [];
 var currentGame;
 var humanChoice;
-var gameType = 'classic';
+var gameType = null;
 
+
+//JS DATA MODEL
 function createPlayer (name, token){
   var player = {
     name: name,
@@ -14,8 +16,6 @@ function createPlayer (name, token){
   }
   return player
 }
-// createPlayer('Human', '🫠')
-// createPlayer('Computer', '💻')
 
 //will only call once on page load 
 function createGame(gameBoardChoices){
@@ -33,9 +33,6 @@ var gameType= [{name:'classic'},
   return currentGame
 }  
 createGame(gameBoardChoices)
-
-
-// }
 
 function getRandomIndex(iconArrays){
   return Math.floor(Math.random() * iconArrays.length);
@@ -70,8 +67,6 @@ function takeTurnDifficult(humanChoice, difficultIcons) {
 }
 
 function determineClassicWins(classicRules){
-  //check lines 39 and 51 to see if that's why it's clearing
-  console.log(gameBoardChoices)
   for(var i = 0; i < classicRules.length; i++){
     if(classicRules[i][`${gameBoardChoices[0]} > ${gameBoardChoices[1]}`]){
       console.log('player1 wins')
@@ -106,20 +101,14 @@ function determineDifficultWins(difficultRules){
 }
 
 function determineGameType(gameType, classicIcons, difficultIcons){
-  // var currentGameType = ''
-  // for(var i = 0; i < currentGame.gameType.length; i++){
-    var currentGameType = gameType
-    // currentGameType = 'difficult'
-    console.log('current type', currentGameType)
+  var currentGameType = gameType
     if(gameType === 'classic') {
       console.log('classic conditional')
       takeTurnClassic('rock', classicIcons)
-      // this is where i'd update the name
       determineClassicWins(classicRules)
       gameBoardChoices = [];
-    } else {
+    } else if (gameType === 'difficult') {
       takeTurnDifficult('lizard', difficultIcons)
-      console.log('difficult conditional')
       determineDifficultWins(difficultRules)
       gameBoardChoices = [];
     }
