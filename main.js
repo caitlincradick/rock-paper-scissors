@@ -41,7 +41,7 @@ function getRandomIndex(iconArrays){
   return Math.floor(Math.random() * iconArrays.length);
  }
 
-function takeTurn(humanChoice, classicIcons) {
+function takeTurnClassic(humanChoice, classicIcons) {
 // createGame(gameBoardChoices)
 var players = [createPlayer('Human', '🫠'), createPlayer('Computer', '💻')]
   if(players[0].name === 'Human'){
@@ -55,6 +55,22 @@ var players = [createPlayer('Human', '🫠'), createPlayer('Computer', '💻')]
   return players 
 }
 
+function takeTurnDifficult(humanChoice, difficultIcons) {
+  // createGame(gameBoardChoices)
+  var players = [createPlayer('Human', '🫠'), createPlayer('Computer', '💻')]
+    if(players[0].name === 'Human'){
+      players[0].choice = humanChoice 
+      gameBoardChoices.push(players[0].choice)
+    } 
+    if (players[1].name === 'Computer') {
+    players[1].choice = difficultIcons[getRandomIndex(difficultIcons)]
+    gameBoardChoices.push(players[1].choice)  
+    }
+    return players 
+  }
+  
+
+
 var classicRules = [ {
   'rock > scissors':true,
   'scissors > rock':false, 
@@ -63,6 +79,9 @@ var classicRules = [ {
   'scissors > paper':true,
   'paper > scissors':false  
  }];
+
+
+ 
 
 function determineClassicWins(classicRules){
   //check lines 39 and 51 to see if that's why it's clearing
@@ -84,6 +103,45 @@ createPlayer('Human', '🫠')
 createPlayer('Computer', '💻')
 }
 
+var difficultRules = [{
+  'rock > scissors':true,
+  'scissors > rock':false, 
+  'paper > rock':true, 
+  'rock > paper':false,
+  'scissors > paper':true,
+  'paper > scissors':false, 
+  'rock > lizard': true, 
+  'lizard > rock': false, 
+  'paper > alien': true, 
+  'alien > paper': false, 
+  'scissors > lizard': true, 
+  'lizard > scissors':false, 
+  'lizard > paper': true, 
+  'paper > lizard': false, 
+  'lizard > alien': true, 
+  'alien > lizard': false, 
+  'alien > scissors': true, 
+  'scissors > alien': false, 
+  'alien > rock': true, 
+  'rock > alien' : false 
+ }];
+
+function determineDifficultWins(difficultRules){
+  for(var i = 0; i < difficultRules.length; i++){
+    if(difficultRules[i][`${gameBoardChoices[0]} > ${gameBoardChoices[1]}`]){
+      console.log('player1 wins')
+      currentGame.player1.wins += 1
+    } else if (difficultRules[i][`${gameBoardChoices[0]} > ${gameBoardChoices[1]}`] === difficultRules[i][`${gameBoardChoices[1]} > ${gameBoardChoices[0]}`]) {
+      console.log('it is a draw')
+    } else if(!difficultRules[i][`${gameBoardChoices[0]} > ${gameBoardChoices[1]}`]){
+      console.log('player2 wins')
+      currentGame.player2.wins += 1
+    }
+  }
+gameBoardChoices = []
+createPlayer('Human', '🫠')
+createPlayer('Computer', '💻')
+}
 
 
 
