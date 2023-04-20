@@ -4,6 +4,7 @@ var difficultIcons = ['rock', 'paper', 'scissors', 'alien', 'lizard']
 var gameBoardChoices = [];
 var currentGame;
 var humanChoice;
+var gameType = 'difficult';
 
 function createPlayer (name, token){
   var player = {
@@ -34,23 +35,24 @@ var gameType= [{name:'classic'},
 createGame(gameBoardChoices)
 
 
-function determineGameType(currentGame){
-  var currentType = ''
-  for(var i = 0; i < currentGame.gameType.length; i++){
-    currentType = currentGame.gameType[i].name 
-    console.log('current type', currentType)
-    if(currentGame.gameType[i].name === 'classic') {
-      console.log('hello')
-      // takeTurnClassic('rock', classicIcons)
+function determineGameType(gameType){
+  var currentGameType = ''
+  // for(var i = 0; i < currentGame.gameType.length; i++){
+    currentGameType = gameType
+    // currentGameType = 'difficult'
+    console.log('current type', currentGameType)
+    if(gameType === 'classic') {
+      console.log('classic conditional')
+      takeTurnClassic('rock', classicIcons)
       // this is where i'd update the name
-      // determineClassicWins(classicRules)
+      determineClassicWins(classicRules)
     } else {
-      // takeTurnDifficult('alien', difficultIcons)
-      console.log('sup')
-      // determineDifficultWins(difficultRules)
+      takeTurnDifficult('alien', difficultIcons)
+      console.log('difficult conditional')
+      determineDifficultWins(difficultRules)
     }
   }
-}
+// }
 
 function getRandomIndex(iconArrays){
   return Math.floor(Math.random() * iconArrays.length);
