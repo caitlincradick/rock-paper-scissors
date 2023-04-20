@@ -4,7 +4,7 @@ var difficultIcons = ['rock', 'paper', 'scissors', 'alien', 'lizard']
 var gameBoardChoices = [];
 var currentGame;
 var humanChoice;
-var gameType = 'difficult';
+var gameType = 'classic';
 
 function createPlayer (name, token){
   var player = {
@@ -35,39 +35,22 @@ var gameType= [{name:'classic'},
 createGame(gameBoardChoices)
 
 
-function determineGameType(gameType){
-  var currentGameType = ''
-  // for(var i = 0; i < currentGame.gameType.length; i++){
-    currentGameType = gameType
-    // currentGameType = 'difficult'
-    console.log('current type', currentGameType)
-    if(gameType === 'classic') {
-      console.log('classic conditional')
-      takeTurnClassic('rock', classicIcons)
-      // this is where i'd update the name
-      determineClassicWins(classicRules)
-    } else {
-      takeTurnDifficult('alien', difficultIcons)
-      console.log('difficult conditional')
-      determineDifficultWins(difficultRules)
-    }
-  }
 // }
 
 function getRandomIndex(iconArrays){
   return Math.floor(Math.random() * iconArrays.length);
- }
+}
 
 function takeTurnClassic(humanChoice, classicIcons) {
-// createGame(gameBoardChoices)
-var players = [createPlayer('Human', '🫠'), createPlayer('Computer', '💻')]
+  // createGame(gameBoardChoices)
+  var players = [createPlayer('Human', '🫠'), createPlayer('Computer', '💻')]
   if(players[0].name === 'Human'){
     players[0].choice = humanChoice 
     gameBoardChoices.push(players[0].choice)
   } 
   if (players[1].name === 'Computer') {
-  players[1].choice = classicIcons[getRandomIndex(classicIcons)]
-  gameBoardChoices.push(players[1].choice)  
+    players[1].choice = classicIcons[getRandomIndex(classicIcons)]
+    gameBoardChoices.push(players[1].choice)  
   }
   return players 
 }
@@ -75,17 +58,17 @@ var players = [createPlayer('Human', '🫠'), createPlayer('Computer', '💻')]
 function takeTurnDifficult(humanChoice, difficultIcons) {
   // createGame(gameBoardChoices)
   var players = [createPlayer('Human', '🫠'), createPlayer('Computer', '💻')]
-    if(players[0].name === 'Human'){
-      players[0].choice = humanChoice 
-      gameBoardChoices.push(players[0].choice)
-    } 
-    if (players[1].name === 'Computer') {
+  if(players[0].name === 'Human'){
+    players[0].choice = humanChoice 
+    gameBoardChoices.push(players[0].choice)
+  } 
+  if (players[1].name === 'Computer') {
     players[1].choice = difficultIcons[getRandomIndex(difficultIcons)]
     gameBoardChoices.push(players[1].choice)  
-    }
-    return players 
   }
-  
+  return players 
+}
+
 function determineClassicWins(classicRules){
   //check lines 39 and 51 to see if that's why it's clearing
   console.log(gameBoardChoices)
@@ -100,9 +83,9 @@ function determineClassicWins(classicRules){
       currentGame.player2.wins += 1
     }
   }
-gameBoardChoices = []
-createPlayer('Human', '🫠')
-createPlayer('Computer', '💻')
+  gameBoardChoices = []
+  createPlayer('Human', '🫠')
+  createPlayer('Computer', '💻')
 }
 
 function determineDifficultWins(difficultRules){
@@ -117,8 +100,28 @@ function determineDifficultWins(difficultRules){
       currentGame.player2.wins += 1
     }
   }
-gameBoardChoices = []
-createPlayer('Human', '🫠')
-createPlayer('Computer', '💻')
+  gameBoardChoices = []
+  createPlayer('Human', '🫠')
+  createPlayer('Computer', '💻')
 }
 
+function determineGameType(gameType, classicIcons, difficultIcons){
+  // var currentGameType = ''
+  // for(var i = 0; i < currentGame.gameType.length; i++){
+    var currentGameType = gameType
+    // currentGameType = 'difficult'
+    console.log('current type', currentGameType)
+    if(gameType === 'classic') {
+      console.log('classic conditional')
+      takeTurnClassic('rock', classicIcons)
+      // this is where i'd update the name
+      determineClassicWins(classicRules)
+      gameBoardChoices = [];
+    } else {
+      takeTurnDifficult('lizard', difficultIcons)
+      console.log('difficult conditional')
+      determineDifficultWins(difficultRules)
+      gameBoardChoices = [];
+    }
+  return currentGameType
+  }
