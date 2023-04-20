@@ -31,14 +31,18 @@ var classicRules = [ {
   'rock > alien' : false 
  }];
 
- 
- console.log([`${gameBoardChoices[0]} > ${gameBoardChoices[1]}`])
 
- function determineClassicWins(){
-   console.log(classicRules[0]['rock > scissors'])
-   for(var i = 0; i < classicRules.length; i++){
-     console.log(classicRules[i][`${gameBoardChoices[0]} > ${gameBoardChoices[1]}`])
-   }
- }
- 
- determineClassicWins()
+// console.log([`${gameBoardChoices[0]} > ${gameBoardChoices[1]}`])
+
+function determineClassicWins(){
+  // console.log(classicRules[0]['rock > scissors'])
+  console.log(gameBoardChoices)
+  for(var i = 0; i < classicRules.length; i++){
+    if(classicRules[i][`${gameBoardChoices[0]} > ${gameBoardChoices[1]}`]){
+      console.log('player1 wins')
+      currentGame.player1.wins = 1
+    }
+  }
+}
+
+determineClassicWins()
