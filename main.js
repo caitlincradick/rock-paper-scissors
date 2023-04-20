@@ -1,15 +1,11 @@
 
 //RETURNS BITTTTCH 
-//query select these into variables ?
 var classicIcons = ['rock', 'paper', 'scissors']
 var difficultIcons = ['rock', 'paper', 'scissors', 'alien', 'lizard']
 var gameBoardChoices = [];
-currentGame;
-//push in different selections, an array of the two fighters selected by user and 
-//computer to assign later when a user makes a selection for a fighter and have other functionlity of the fighters based on the conditions of the win type selected 
-//seperate function that determines which index position of the array beats the other 
-//temporary-will clear out 
-//win conditions can see like rules -- will also need losing conditions 
+var currentGame;
+var humanChoice;
+
 
 function createPlayer (name, token){
   var player = {
@@ -23,35 +19,31 @@ function createPlayer (name, token){
 createPlayer('Human', '🫠')
 createPlayer('Computer', '💻')
 
-//will only call once on page load
-function createGame(gameBoardChoices) {
+//will only call once on page load 
+function createGame(gameBoardChoices){
 var player1 = createPlayer('Human', '🫠')
 var player2 = createPlayer('Computer', '💻')
 var gameType= [{name:'classic', winConditions:[]},    
-    {name:'difficult', winConditions:[]}];
+              {name:'difficult', winConditions:[]}];
   var game = {
     player1:player1, 
     player2:player2, 
     gameType:gameType, 
     gameBoardChoices: gameBoardChoices
   }
-  console.log(game)
   currentGame = game
   return currentGame
-}
-  
- createGame(gameBoardChoices)
+}  
+createGame(gameBoardChoices)
 
 
-
- //computer getting random icon
 function getRandomIndex(iconArrays){
   return Math.floor(Math.random() * iconArrays.length);
  }
 
 function takeTurn(humanChoice, classicIcons) {
+// createGame(gameBoardChoices)
 var players = [createPlayer('Human', '🫠'), createPlayer('Computer', '💻')]
- // for the player that means selecting their choice of rock/paper/scissor. For the computer, that means running the method for it’s random choice
   if(players[0].name === 'Human'){
     players[0].choice = humanChoice 
     gameBoardChoices.push(players[0].choice)
@@ -62,7 +54,37 @@ var players = [createPlayer('Human', '🫠'), createPlayer('Computer', '💻')]
   }
   return players 
 }
-takeTurn('rock', classicIcons)
+
+var classicRules = [ {
+  'rock > scissors':true,
+  'scissors > rock':false, 
+  'paper > rock':true, 
+  'rock > paper':false,
+  'scissors > paper':true,
+  'paper > scissors':false  
+ }];
+
+function determineClassicWins(classicRules){
+  //check lines 39 and 51 to see if that's why it's clearing
+  
+  console.log(gameBoardChoices)
+  for(var i = 0; i < classicRules.length; i++){
+    if(classicRules[i][`${gameBoardChoices[0]} > ${gameBoardChoices[1]}`]){
+      console.log('player1 wins')
+      currentGame.player1.wins += 1
+    } else if (classicRules[i][`${gameBoardChoices[0]} > ${gameBoardChoices[1]}`] === classicRules[i][`${gameBoardChoices[1]} > ${gameBoardChoices[0]}`]) {
+      console.log('it is a draw')
+    } else if(!classicRules[i][`${gameBoardChoices[0]} > ${gameBoardChoices[1]}`]){
+      console.log('player2 wins')
+      currentGame.player2.wins += 1
+    }
+  }
+gameBoardChoices = []
+createPlayer('Human', '🫠')
+createPlayer('Computer', '💻')
+}
+
+
 
 
 
