@@ -3,7 +3,7 @@
 //query select these into variables ?
 var classicIcons = ['rock', 'paper', 'scissors']
 var difficultIcons = ['rock', 'paper', 'scissors', 'alien', 'lizard']
-var gameBoard = [];
+var gameBoardChoices = [];
 currentGame;
 //push in different selections, an array of the two fighters selected by user and 
 //computer to assign later when a user makes a selection for a fighter and have other functionlity of the fighters based on the conditions of the win type selected 
@@ -24,7 +24,7 @@ createPlayer('Human', '🫠')
 createPlayer('Computer', '💻')
 
 //will only call once on page load
-function createGame(gameBoard) {
+function createGame(gameBoardChoices) {
 var player1 = createPlayer('Human', '🫠')
 var player2 = createPlayer('Computer', '💻')
 var gameType= [{name:'classic', winConditions:[]},    
@@ -33,42 +33,37 @@ var gameType= [{name:'classic', winConditions:[]},
     player1:player1, 
     player2:player2, 
     gameType:gameType, 
-    gameBoard: gameBoard
+    gameBoardChoices: gameBoardChoices
   }
   console.log(game)
-  return game 
+  currentGame = game
+  return currentGame
 }
   
- createGame(gameData)
+ createGame(gameBoardChoices)
 
 
 
  //computer getting random icon
- function getRandomIndex(iconArray){
-  return Math.floor(Math.random() * iconArray.length);
+function getRandomIndex(iconArrays){
+  return Math.floor(Math.random() * iconArrays.length);
  }
 
-
- 
- function takeTurn(humanChoice, classicIcons) {
-  var player = createPlayer('Computer', '🫠') 
-  console.log(player.name)
-    console.log(classicIcons)
-   // for the player that means selecting their choice of rock/paper/scissor. For the computer, that means running the method for it’s random choice
-  if(player.name === 'Human'){
-    player.choice = humanChoice 
-    gameBoardChoices.push(player.choice)
-    console.log(humanChoice)
-  } else if (player.name != 'Human'){
-    player.name = 'Computer'
-    player.choice = classicIcons[getRandomIndex(classicIcons)]
-    gameBoardChoices.push(player.choice)  
-    console.log(player.choice)
+function takeTurn(humanChoice, classicIcons) {
+var players = [createPlayer('Human', '🫠'), createPlayer('Computer', '💻')]
+ // for the player that means selecting their choice of rock/paper/scissor. For the computer, that means running the method for it’s random choice
+  if(players[0].name === 'Human'){
+    players[0].choice = humanChoice 
+    gameBoardChoices.push(players[0].choice)
+  } 
+  if (players[1].name === 'Computer') {
+  players[1].choice = classicIcons[getRandomIndex(classicIcons)]
+  gameBoardChoices.push(players[1].choice)  
   }
-  return player
-  }
-  
-  takeTurn('rock', classicIcons)
+  return players 
+}
+takeTurn('rock', classicIcons)
 
 
-function classicGame(humanChoice, computerIconArray)
+
+// function classicGame(humanChoice, computerIconArray)
