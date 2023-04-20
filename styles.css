@@ -26,7 +26,8 @@ main {
   flex-direction: column;
   justify-content:flex-start;
   align-items: center;
-  background-color:#a7d7c5;  
+  /* background-color:#a7d7c5;   */
+  background-image: linear-gradient(to bottom, #74b49b,#a7d7c5, black);
   height: 100vh;
   width: 20%;
 }
@@ -50,16 +51,31 @@ main {
   margin-bottom: 2px;
 }
 
-
-
 /*GAME BOARD*/
 .game-board {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #74b49b;;
+  background-color: purple;
   height:100vh; 
   width: 60%;
+}
+
+.game-type {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  /* border:solid black 2px; */
+  width: 250px;
+  height: 500px;
+}
+
+.box {
+  height: 200px; 
+  width: 250px;
+  /* border: black solid 2px; */
+  background-image: linear-gradient(to bottom right, yellow, #a7d7c5, maroon ) ;
 }
 
 /*PLAYERS */
@@ -69,6 +85,27 @@ main {
   font-size: 43px;
 }
 
+/* ICONS */
+.icons {
+  display:flex; 
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  /* border:solid black; */
+  margin-top: 25px;
+  height: 400px;
+  width:500px
+
+  
+}
+
+img {
+  height:150px;
+  width:150px;
+  margin-top:0;
+}
 
 
-
+.hidden{
+  display:none
+}
