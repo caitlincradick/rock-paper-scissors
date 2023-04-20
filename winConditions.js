@@ -40,9 +40,16 @@ function determineClassicWins(){
   for(var i = 0; i < classicRules.length; i++){
     if(classicRules[i][`${gameBoardChoices[0]} > ${gameBoardChoices[1]}`]){
       console.log('player1 wins')
-      currentGame.player1.wins = 1
+      currentGame.player1.wins += 1
+    } else if (classicRules[i][`${gameBoardChoices[0]} > ${gameBoardChoices[1]}`] === classicRules[i][`${gameBoardChoices[1]} > ${gameBoardChoices[0]}`]) {
+      console.log('it is a draw')
+    } else if(!classicRules[i][`${gameBoardChoices[0]} > ${gameBoardChoices[1]}`]){
+      console.log('player2 wins')
+      currentGame.player2.wins += 1
+    
     }
   }
+  // createGame(gameBoardChoices)
 }
 
 determineClassicWins()
