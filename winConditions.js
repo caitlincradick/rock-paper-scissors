@@ -1,14 +1,14 @@
 //WIN CONDITIONS:
-var classicRules = [ {
+var classicRules = {
   'rock > scissors':true,
   'scissors > rock':false, 
   'paper > rock':true, 
   'rock > paper':false,
   'scissors > paper':true,
   'paper > scissors':false  
- }];
+ };
 
- var difficultRules = [{
+ var difficultRules = {
   'rock > scissors':true,
   'scissors > rock':false, 
   'paper > rock':true, 
@@ -29,5 +29,5 @@ var classicRules = [ {
   'scissors > alien': false, 
   'alien > rock': true, 
   'rock > alien' : false 
- }];
+ };
 
