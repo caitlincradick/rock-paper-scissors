@@ -6,13 +6,6 @@ var currentGame;
 var humanChoice;
 var gameType = 'classic';
 
-// function resetGameBoard(gameBoardChoices){
-//   if(gameBoardChoices.length > 2){
-//     gameBoardChoices = []
-//   }
-//   return gameBoardChoices
-// }
-
 //JS DATA MODEL
 function createPlayer (name, token){
   var player = {
@@ -95,13 +88,13 @@ function determineClassicWins(classicRules){
 function determineDifficultWins(difficultRules){
   for(var i = 0; i < difficultRules.length; i++){
     if(difficultRules[i][`${gameBoardChoices[0]} > ${gameBoardChoices[1]}`]){
-      console.log('player1 wins')
       currentGame.player1.wins += 1
+      console.log('player1 wins')
     } else if (difficultRules[i][`${gameBoardChoices[0]} > ${gameBoardChoices[1]}`] === difficultRules[i][`${gameBoardChoices[1]} > ${gameBoardChoices[0]}`]) {
       console.log('it is a draw')
     } else if(!difficultRules[i][`${gameBoardChoices[0]} > ${gameBoardChoices[1]}`]){
-      console.log('player2 wins')
       currentGame.player2.wins += 1
+      console.log('player2 wins')
     }
   }
   // resetGameBoard(gameBoardChoices)
@@ -115,15 +108,18 @@ function determineGameType(gameType, classicIcons, difficultIcons){
     if(gameType === 'classic') {
       console.log('classic conditional')
       takeTurnClassic('rock', classicIcons)
-      determineClassicWins(classicRules)
+      // determineClassicWins(classicRules)
       // gameBoardChoices = [];
     } else if (gameType === 'difficult') {
       takeTurnDifficult('lizard', difficultIcons)
-      determineDifficultWins(difficultRules)
+      // determineDifficultWins(difficultRules)
       // gameBoardChoices = [];
     }
   return currentGame
   }
 
 
- 
+ function resetGameBoard(gameBoardChoices){
+  gameBoardChoices = []
+  return gameBoardChoices
+}

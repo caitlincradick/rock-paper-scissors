@@ -16,23 +16,25 @@
         <h2 class="wins">Wins:0</h2>
       </section>
       <section class="game-board">
-        <h1 class="game-board-heading">Rock, Paper, Scissors</h1>
-        <h2 class="game-status">It's a draw</h2>
+        <h1 class="game-board-heading">It's Rock, Paper, Scissors y'all</h1>
+        <h2 class="game-status">Choose your Fighter !</h2>
         <button>Change Game ?</button>
         <section class="icons">
           <img class="rock" id="rock" src="assets/black-and-white-rocks.png" alt="drawing of rocks">
           <img class="scissors" id="scissors" src="assets/black-and-white-scissors.png" alt="drawing of scissors">
           <img class="paper" id="paper" src="assets/black-and-white-paper.png" alt="drawing of paper">
-          <img class="alien" id="alien" src="assets/black-and-white-alien.png" alt="drawing of alien">
-          <img class="lizard" id="lizard" src="assets/favpng_salamander-lizard-clip-art.png" alt="drawing of lizard">
+          <img class="alien hidden" id="alien" src="assets/black-and-white-alien.png" alt="drawing of alien">
+          <img class="lizard hidden" id="lizard" src="assets/favpng_salamander-lizard-clip-art.png" alt="drawing of lizard">
         </section>
-        <section class="game-type  hidden ">
-          <div class="classic box">
-            <p class="classic-game-win">classic rock>scissors paper>rock scissors>paper</p>
-          </div>
-          <div class="difficult box">
-            <p class="difficult-game-win">difficult</p>
-          </div>
+        <section class="game-type hidden">
+          <button class="classic-btn"> 
+            <h1>Classic</h1>
+            <p class="classic-game-win">rock > scissors <br> paper > rock <br> scissors > paper </p>
+          </button>
+          <button class="difficult-btn">
+            <h1>Difficult</h1>
+            <p class="difficult-game-win">rock > scissors & lizard <br> paper > rock & alien <br> scissors > paper & lizard <br> lizard > paper & alien <br> alien > scissors & rock </p></p>
+          </button>
         </section>
       </section>
       <section class="right-player">

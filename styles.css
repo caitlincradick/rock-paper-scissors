@@ -26,8 +26,7 @@ main {
   flex-direction: column;
   justify-content:flex-start;
   align-items: center;
-  /* background-color:#a7d7c5;   */
-  background-image: linear-gradient(to bottom, #74b49b,#a7d7c5, black);
+  background-color:#a7d7c5;  
   height: 100vh;
   width: 20%;
 }
@@ -56,7 +55,7 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: purple;
+  background-color: #74b49b;;
   height:100vh; 
   width: 60%;
 }
@@ -71,11 +70,12 @@ main {
   height: 500px;
 }
 
-.box {
+.classic-btn, .difficult-btn {
   height: 200px; 
   width: 250px;
-  /* border: black solid 2px; */
-  background-image: linear-gradient(to bottom right, yellow, #a7d7c5, maroon ) ;
+  border: none;
+  background-color:azure;
+  font-size:large;
 }
 
 /*PLAYERS */
