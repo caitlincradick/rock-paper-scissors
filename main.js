@@ -4,8 +4,14 @@ var difficultIcons = ['rock', 'paper', 'scissors', 'alien', 'lizard']
 var gameBoardChoices = [];
 var currentGame;
 var humanChoice;
-var gameType = null;
+var gameType = 'classic';
 
+// function resetGameBoard(gameBoardChoices){
+//   if(gameBoardChoices.length > 2){
+//     gameBoardChoices = []
+//   }
+//   return gameBoardChoices
+// }
 
 //JS DATA MODEL
 function createPlayer (name, token){
@@ -39,7 +45,8 @@ function getRandomIndex(iconArrays){
 }
 
 function takeTurnClassic(humanChoice, classicIcons) {
-  // createGame(gameBoardChoices)
+gameBoardChoices = []
+console.log(gameBoardChoices)
   var players = [createPlayer('Human', '🫠'), createPlayer('Computer', '💻')]
   if(players[0].name === 'Human'){
     players[0].choice = humanChoice 
@@ -49,7 +56,8 @@ function takeTurnClassic(humanChoice, classicIcons) {
     players[1].choice = classicIcons[getRandomIndex(classicIcons)]
     gameBoardChoices.push(players[1].choice)  
   }
-  return players 
+  determineClassicWins(classicRules)
+  return players
 }
 
 function takeTurnDifficult(humanChoice, difficultIcons) {
@@ -78,7 +86,8 @@ function determineClassicWins(classicRules){
       currentGame.player2.wins += 1
     }
   }
-  gameBoardChoices = []
+  // resetGameBoard(gameBoardChoices)
+  // gameBoardChoices = []
   createPlayer('Human', '🫠')
   createPlayer('Computer', '💻')
 }
@@ -95,22 +104,26 @@ function determineDifficultWins(difficultRules){
       currentGame.player2.wins += 1
     }
   }
-  gameBoardChoices = []
+  // resetGameBoard(gameBoardChoices)
+  // gameBoardChoices = []
   createPlayer('Human', '🫠')
   createPlayer('Computer', '💻')
 }
 
 function determineGameType(gameType, classicIcons, difficultIcons){
-  var currentGameType = gameType
+  // var currentGameType = gameType
     if(gameType === 'classic') {
       console.log('classic conditional')
       takeTurnClassic('rock', classicIcons)
       determineClassicWins(classicRules)
-      gameBoardChoices = [];
+      // gameBoardChoices = [];
     } else if (gameType === 'difficult') {
       takeTurnDifficult('lizard', difficultIcons)
       determineDifficultWins(difficultRules)
-      gameBoardChoices = [];
+      // gameBoardChoices = [];
     }
-  return currentGameType
+  return currentGame
   }
+
+
+ 
