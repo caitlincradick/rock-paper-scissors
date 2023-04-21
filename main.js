@@ -4,6 +4,8 @@ var winsPlayer2 = document.querySelector('.wins-computer');
 var gameStatus = document.querySelector('.game-status');
 var changeGameBtn = document.querySelector('.change-game');
 var homeViewGameType = document.querySelector('.game-type');
+var bothButtonsHomeView = document.querySelector('.buttons')
+//needs to be querySelectorAll
 var classicBtn = document.querySelector('.classic-btn');
 var difficultBtn = document.querySelector('.difficult-btn')
 var iconsView = document.querySelector('.icons');
@@ -13,23 +15,18 @@ var paper = document.querySelector('#paper');
 var alien = document.querySelector('#alien');
 var lizard = document.querySelector('#lizard');
 
-
-function showHomePage(){
-  if(!homeViewGameType.classList.contains('hidden')){
-    hide(changeGameBtn);
-    hide(iconsView);
-  }
-}
-
-function showGameBoard(){
-  
-}
-
 //EVENT LISTENERS 
+window.addEventListener('load', createGame(gameBoardChoices));
 
+classicBtn.addEventListener('click', function() {
+  showClassicGameBoard()
+});
 
+difficultBtn.addEventListener('click', function() {
+  showDifficultGameBoard()
+});
 
-
+changeGameBtn.addEventListener('click',showHomePage() )
 
 //GLOBAL VARIABLES
 var classicIcons = ['rock', 'paper', 'scissors']
@@ -50,7 +47,6 @@ function createPlayer (name, token){
   return player
 }
 
-//will only call once on page load 
 function createGame(gameBoardChoices){
 var player1 = createPlayer('Human', '🫠')
 var player2 = createPlayer('Computer', '💻')
@@ -66,15 +62,6 @@ var gameType= [{name:'classic'},
   return currentGame
 }  
 createGame(gameBoardChoices)
-
-function show(element) {
-  element.classList.remove('hidden');
-}
-
-function hide(element) {
-  element.classList.add('hidden');
-}
-
 
 function getRandomIndex(iconArrays){
   return Math.floor(Math.random() * iconArrays.length);
@@ -97,7 +84,6 @@ console.log(gameBoardChoices)
 }
 
 function takeTurnDifficult(humanChoice, difficultIcons) {
-  // createGame(gameBoardChoices)
   var players = [createPlayer('Human', '🫠'), createPlayer('Computer', '💻')]
   if(players[0].name === 'Human'){
     players[0].choice = humanChoice 
@@ -122,7 +108,6 @@ function determineClassicWins(classicRules){
       currentGame.player2.wins += 1
     }
   }
-  // resetGameBoard(gameBoardChoices)
   // gameBoardChoices = []
   createPlayer('Human', '🫠')
   createPlayer('Computer', '💻')
@@ -140,14 +125,12 @@ function determineDifficultWins(difficultRules){
       console.log('player2 wins')
     }
   }
-  // resetGameBoard(gameBoardChoices)
   // gameBoardChoices = []
   createPlayer('Human', '🫠')
   createPlayer('Computer', '💻')
 }
 
 function determineGameType(gameType, classicIcons, difficultIcons){
-  // var currentGameType = gameType
     if(gameType === 'classic') {
       console.log('classic conditional')
       takeTurnClassic('rock', classicIcons)
@@ -162,7 +145,48 @@ function determineGameType(gameType, classicIcons, difficultIcons){
   }
 
 
- function resetGameBoard(gameBoardChoices){
-  gameBoardChoices = []
+//JS DOM
+function show(element) {
+  element.classList.remove('hidden');
+}
+
+function hide(element) {
+  element.classList.add('hidden');
+}
+
+function showHomePage(){
+  if(!homeViewGameType.classList.contains('hidden')){
+    hide(changeGameBtn);
+    hide(iconsView);
+    show(classicBtn);
+    show(difficultBtn);
+  }
+}
+
+function showClassicGameBoard(){
+  if(!homeViewGameType.classList.contains('hidden')){
+    hide(classicBtn);
+    hide(difficultBtn);
+    show(iconsView);
+    show(changeGameBtn)
+    gameStatus.innerText = 'Choose your fighter !'
+  }
+}
+
+function showDifficultGameBoard(){
+  if(!homeViewGameType.classList.contains('hidden')){
+    hide(classicBtn);
+    hide(difficultBtn);
+    show(iconsView);
+    show(alien);
+    show(lizard);
+    show(changeGameBtn);
+    gameStatus.innerText = 'Choose your fighter !'
+  }
+}
+
+ function resetGame(gameBoardChoices){
+  gameBoardChoices = []; 
+  showHomePage();
   return gameBoardChoices
 }
