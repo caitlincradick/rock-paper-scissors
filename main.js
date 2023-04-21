@@ -1,3 +1,36 @@
+//QUERY SELECTORS
+var winsPlayer1 = document.querySelector('.wins-human');
+var winsPlayer2 = document.querySelector('.wins-computer');
+var gameStatus = document.querySelector('.game-status');
+var changeGameBtn = document.querySelector('.change-game');
+var homeViewGameType = document.querySelector('.game-type');
+var classicBtn = document.querySelector('.classic-btn');
+var difficultBtn = document.querySelector('.difficult-btn')
+var iconsView = document.querySelector('.icons');
+var rock = document.querySelector('#rock');
+var scissors = document.querySelector('#scissors');
+var paper = document.querySelector('#paper');
+var alien = document.querySelector('#alien');
+var lizard = document.querySelector('#lizard');
+
+
+function showHomePage(){
+  if(!homeViewGameType.classList.contains('hidden')){
+    hide(changeGameBtn);
+    hide(iconsView);
+  }
+}
+
+function showGameBoard(){
+  
+}
+
+//EVENT LISTENERS 
+
+
+
+
+
 //GLOBAL VARIABLES
 var classicIcons = ['rock', 'paper', 'scissors']
 var difficultIcons = ['rock', 'paper', 'scissors', 'alien', 'lizard']
@@ -5,6 +38,7 @@ var gameBoardChoices = [];
 var currentGame;
 var humanChoice;
 var gameType = 'classic';
+
 
 //JS DATA MODEL
 function createPlayer (name, token){
@@ -32,6 +66,15 @@ var gameType= [{name:'classic'},
   return currentGame
 }  
 createGame(gameBoardChoices)
+
+function show(element) {
+  element.classList.remove('hidden');
+}
+
+function hide(element) {
+  element.classList.add('hidden');
+}
+
 
 function getRandomIndex(iconArrays){
   return Math.floor(Math.random() * iconArrays.length);
