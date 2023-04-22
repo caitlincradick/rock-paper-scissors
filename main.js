@@ -4,12 +4,14 @@ var winsPlayer2 = document.querySelector('.wins-computer');
 var gameStatus = document.querySelector('.game-status');
 var changeGameBtn = document.querySelector('.change-game');
 var homeViewGameType = document.querySelector('.game-type');
-var bothButtonsHomeView = document.querySelector('.buttons')
-//needs to be querySelectorAll
+var bothButtonsHomeView = document.querySelector('.buttons');
+var choices = document.querySelector('.selected-icons')
+var choiceHuman = document.getElementById('choiceHuman');
+var choiceComputer = document.getElementById('choiceComputer');
 var classicBtn = document.querySelector('.classic-btn');
 var difficultBtn = document.querySelector('.difficult-btn')
 var iconsView = document.querySelector('.icons');
-var allIcons = document.querySelectorAll('.icon'),i;
+var allIcons = document.querySelectorAll('img');
 var icon = document.querySelector('.icon')
 var rock = document.querySelector('#rock');
 var paper = document.querySelector('#paper');
@@ -23,6 +25,7 @@ window.addEventListener('load', createGame(gameBoardChoices));
 classicBtn.addEventListener('click', function(event) {
   showClassicGameBoard();
   determineGameType(event);
+  setTimeout(resetGame, 2000)
 });
 
 difficultBtn.addEventListener('click', function(event) {
@@ -32,10 +35,11 @@ difficultBtn.addEventListener('click', function(event) {
 });
 
 rock.addEventListener('click', function(event) {
+  console.log('rock clicked')
   getAllIcons(event)
   determineGameType(event)
   takeTurnClassic(event.target.id, classicIcons);
-  console.log('rock clicked')
+  // displayPlayerChoices()
 })
 
 paper.addEventListener('click', function(event) {
@@ -48,6 +52,7 @@ paper.addEventListener('click', function(event) {
 scissors.addEventListener('click', function(event) {
   getAllIcons(event)
   takeTurnClassic(event.target.id, classicIcons);
+ 
   console.log('scissors clicked')
 })
 
@@ -62,6 +67,7 @@ var gameBoardChoices = [];
 var currentGame;
 var humanChoice;
 var gameType;
+
 
 
 //JS DATA MODEL
@@ -105,12 +111,10 @@ var classicOrDifficult = event.target.className
     console.log('hello')
     // currentGame.rules = classicRules
     gameType = 'classic'
-    // takeTurnClassic(humanChoice, classicIcons)
   } else if (classicOrDifficult.includes('difficult-btn')){
     console.log('hi')
       // currentGame.rules = difficultRules
       gameType = 'difficult'
-      // takeTurnDifficult(humanChoice, difficultIcons)
   }
   return classicOrDifficult
 }
@@ -127,6 +131,7 @@ if (currentGame.player2.name === 'Computer') {
   gameBoardChoices.push(currentGame.player2.choice)  
 }
 console.log(gameBoardChoices)
+displayPlayerChoices()
   determineWins()
 }
 
@@ -143,27 +148,33 @@ function takeTurnDifficult(humanChoice, difficultIcons) {
   // determineWins()
 }
 
+
 function determineRules(){
   if(gameType === 'classic'){
-  currentGame.rules = classicRules
-} else if (gameType === 'difficult') {
-  currentGame.rules = difficultRules
-}
-return currentGame.rules
+    currentGame.rules = classicRules
+  } else if (gameType === 'difficult') {
+    currentGame.rules = difficultRules
+  }
+  return currentGame.rules
 }
 
 
 function determineWins(){
   determineRules()
-    if(currentGame.rules[`${gameBoardChoices[0]} > ${gameBoardChoices[1]}`]){
-      console.log('player1 wins')
-      currentGame.player1.wins += 1
-    } else if (gameBoardChoices[0] === gameBoardChoices[1]) {
-      console.log('it is a draw')
-    } else if(!currentGame.rules[`${gameBoardChoices[0]} > ${gameBoardChoices[1]}`]){
-      console.log('player2 wins')
-      currentGame.player2.wins += 1
-    }
+  if(currentGame.rules[`${gameBoardChoices[0]} > ${gameBoardChoices[1]}`]){
+    console.log('player1 wins')
+    currentGame.player1.wins += 1
+    gameStatus.innerText = 'Player 1 Wins 🫠'
+    winsPlayer1.innerText = `${currentGame.player1.wins}`
+  } else if (gameBoardChoices[0] === gameBoardChoices[1]) {
+    console.log('it is a draw')
+    gameStatus.innerText = 'It\s a draw !'
+  } else if(!currentGame.rules[`${gameBoardChoices[0]} > ${gameBoardChoices[1]}`]){
+    console.log('player2 wins')
+    currentGame.player2.wins += 1
+    gameStatus.innerText = 'Player 2 Wins 💻'
+    winsPlayer2.innerText = `${currentGame.player2.wins}`
+  }
   // gameBoardChoices = []
 }
 
@@ -191,6 +202,9 @@ function showClassicGameBoard(){
     hide(difficultBtn);
     show(iconsView);
     show(changeGameBtn);
+    show(rock);
+    show(paper);
+    show(scissors);
     hide(alien);
     hide(lizard);
     gameStatus.innerText = 'Choose your fighter !'
@@ -216,23 +230,33 @@ function backtoHomePage(){
   hide(iconsView);
 }
 
-
-
-function resetGame(gameBoardChoices){
-  gameBoardChoices = []; 
-  showHomePage();
-  return gameBoardChoices
+function hideIcons(){
+  hide(rock);
+  hide(paper);
+  hide(scissors);
+  hide(alien);
+  hide(lizard);
 }
-// function displayPlayerData(){
-//   <section class="game-board">
-//   <h1 class="game-board-heading">It's Rock, Paper, Scissors y'all</h1>
-//   <h2 class="game-status">Choose your Game !</h2>
-//   <button class = "change-game">Change Game ?</button>
-//   <section class="icons hidden">
-//     <img class="rock" id="rock" src="assets/black-and-white-rocks.png" alt="drawing of rocks">
-//     <img class="scissors" id="scissors" src="assets/black-and-white-scissors.png" alt="drawing of scissors">
-//     <img class="paper" id="paper" src="assets/black-and-white-paper.png" alt="drawing of paper">
-//     <img class="alien hidden" id="alien" src="assets/black-and-white-alien.png" alt="drawing of alien">
-//     <img class="lizard hidden" id="lizard" src="assets/favpng_salamander-lizard-clip-art.png" alt="drawing of lizard">
-//   </section>
-// }
+
+
+
+function displayPlayerChoices(){
+  for (var i = 0; i < allIcons.length; i++) {
+    hide(allIcons[i]);
+  }
+  console.log(currentGame.player1.choice)
+  console.log(currentGame.player2.choice)
+  choices.innerHTML = `
+  <img src="assets/${currentGame.player1.choice}.png" alt="drawing of rocks"/>
+  <img src="assets/${currentGame.player2.choice}.png"/>
+  `;
+}
+
+function resetGame(){
+  iconsView.innerHTML = `
+  <img class="rock icon " id="rock" src="assets/rock.png" alt="drawing of rocks">
+  <img class="scissors icon " id="scissors" src="assets/scissors.png" alt="drawing of scissors">
+  <img class="paper icon " id="paper" src="assets/paper.png" alt="drawing of paper">
+  <img class="alien icon hidden" id="alien" src="assets/alien.png" alt="drawing of alien">
+  <img class="lizard icon hidden" id="lizard" src="assets/lizard.png" alt="drawing of lizard">`
+}
