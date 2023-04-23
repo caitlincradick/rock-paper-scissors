@@ -61,6 +61,7 @@ function createPlayer (name, token){
   var player = {
     name: name,
     token: token,
+    winner: false,
     wins: 0 
   }
   return player
@@ -129,17 +130,15 @@ function determineWins(){
   if(currentGame.rules[`${gameBoardChoices[0]} > ${gameBoardChoices[1]}`]){
     console.log('player1 wins')
     currentGame.player1.wins += 1
-   console.log('WINNER', currentGame.winner = currentGame.player1.wins)
-    gameStatus.innerText = 'Player 1 Wins 🫠'
-    // winsPlayer1.innerText = `${currentGame.player1.wins}`
+   currentGame.player1.winner = true
   } else if (gameBoardChoices[0] === gameBoardChoices[1]) {
     console.log('it is a draw')
-    gameStatus.innerText = 'It\s a draw !'
+    currentGame.player1.winner = false;
+    currentGame.player2.winner = false;
   } else if(!currentGame.rules[`${gameBoardChoices[0]} > ${gameBoardChoices[1]}`]){
     console.log('player2 wins')
     currentGame.player2.wins += 1
-    gameStatus.innerText = 'Player 2 Wins 💻'
-    // winsPlayer2.innerText = `${currentGame.player2.wins}`
+    currentGame.player2.winner = true
   }
 }
 
@@ -219,7 +218,13 @@ function resetGame(){
 }
 
 function displayWins(){
-  console.log('PLAYER 1 WINS', currentGame.player1.wins)
   winsPlayer1.innerText = `${currentGame.player1.wins}`
   winsPlayer2.innerText = `${currentGame.player2.wins}`
+  if(currentGame.player1.winner){
+    gameStatus.innerText = 'Player 1 Wins 🫠'
+  } else if(!currentGame.player1.winner && !currentGame.player2.winner){
+    gameStatus.innerText = 'It\s a draw !'
+  } else {
+    gameStatus.innerText = 'Player 2 Wins 💻'
+  }
 }
