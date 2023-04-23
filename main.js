@@ -187,6 +187,7 @@ function showDifficultGameBoard(){
     hide(classicBtn);
     hide(difficultBtn);
     show(iconsView);
+    show(classicBoard);
     show(difficultBoard);
     show(changeGameBtn);
     gameStatus.innerText = 'Choose your fighter !'
@@ -199,15 +200,16 @@ function backtoHomePage(){
   hide(changeGameBtn);
   hide(iconsView);
   hide(classicBoard);
+  hide(difficultBoard)
 }
 
-function hideIcons(){
-  hide(rock);
-  hide(paper);
-  hide(scissors);
-  hide(alien);
-  hide(lizard);
-}
+// function hideIcons(){
+//   hide(rock);
+//   hide(paper);
+//   hide(scissors);
+//   hide(alien);
+//   hide(lizard);
+// }
 
 function displayPlayerChoices(){
   for (var i = 0; i < allIcons.length; i++) {
@@ -229,14 +231,14 @@ function resetGame(){
   show(scissors)
 // hide(lizard)
 //  hide(alien)
-  console.log('classic reset')
- if(currentGame.gameType === 'difficult'){
-    console.log('difficult resest')
-    show(rock);
-    show(paper)
-    show(scissors)
+//   console.log('classic reset')
+//  if(currentGame.gameType === 'difficult'){
+//     console.log('difficult resest')
+//     show(rock);
+//     show(paper)
+//     show(scissors)
   show(lizard)
   show(alien)
 }
-}
+// }
 
