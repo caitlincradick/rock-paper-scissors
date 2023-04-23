@@ -25,10 +25,10 @@ var alien = document.querySelector('#alien');
 window.addEventListener('load', createGame(gameBoardChoices));
 
 classicBtn.addEventListener('click', function(event) {
+  determineGameType(event);
   showClassicGameBoard();
   // getAllIcons(event)
-  determineGameType(event);
-  setTimeout(resetGame, 2000)
+  
 });
 
 difficultBtn.addEventListener('click', function(event) {
@@ -68,7 +68,7 @@ var classicIcons = ['rock', 'paper', 'scissors']
 var difficultIcons = ['rock', 'paper', 'scissors', 'alien', 'lizard']
 var gameBoardChoices = [];
 var currentGame;
-var humanChoice;
+// var humanChoice;
 var gameType;
 
 
@@ -119,7 +119,7 @@ var classicOrDifficult = event.target.className
       // currentGame.rules = difficultRules
       gameType = 'difficult'
   }
-  return classicOrDifficult
+  return gameType
 }
 
 function takeTurnClassic(humanChoice, classicIcons) {
@@ -136,6 +136,7 @@ if (currentGame.player2.name === 'Computer') {
 console.log(gameBoardChoices)
 displayPlayerChoices()
   determineWins()
+  setTimeout(resetGame, 2000)
 }
 
 function takeTurnDifficult(humanChoice, difficultIcons) {
@@ -148,7 +149,9 @@ function takeTurnDifficult(humanChoice, difficultIcons) {
     currentGame.player2.choice = difficultIcons[getRandomIndex(difficultIcons)]
     gameBoardChoices.push(currentGame.player2.choice)  
   }
-  // determineWins()
+  displayPlayerChoices()
+  determineWins()
+  setTimeout(resetGame, 2000)
 }
 
 
@@ -215,8 +218,7 @@ function showDifficultGameBoard(){
     hide(classicBtn);
     hide(difficultBtn);
     show(iconsView);
-    show(alien);
-    show(lizard);
+    show(difficultBoard);
     show(changeGameBtn);
     gameStatus.innerText = 'Choose your fighter !'
   }
@@ -252,11 +254,41 @@ function displayPlayerChoices(){
   `;
 }
 
+
 function resetGame(){
-  iconsView.innerHTML = `
-  <img class="rock icon " id="rock" src="assets/rock.png" alt="drawing of rocks">
-  <img class="scissors icon " id="scissors" src="assets/scissors.png" alt="drawing of scissors">
-  <img class="paper icon " id="paper" src="assets/paper.png" alt="drawing of paper">
-  <img class="alien icon hidden" id="alien" src="assets/alien.png" alt="drawing of alien">
-  <img class="lizard icon hidden" id="lizard" src="assets/lizard.png" alt="drawing of lizard">`
+  selectedIcons.innerHTML = ''
+  show(rock);
+  show(paper)
+  show(scissors)
+
+  if(gameType === 'difficult')
+  show(lizard)
+  show(alien)
 }
+// function resetGame(){
+//  currentGame.player1.choice = ''
+//  currentGame.player2.choice = ''
+//   selectedIcons.innerHTML = ''
+//   gameStatus.innerText = 'Choose your fighter !'
+//   if(gameType === 'classic'){
+//     classicBoard.innerHTML =
+//     `<section class ="classic-board">
+//     <img class="rock icon" id="rock" src="assets/rock.png" alt="drawing of rocks">
+//     <img class="scissors icon" id="scissors" src="assets/scissors.png" alt="drawing of scissors">
+//     <img class="paper icon" id="paper" src="assets/paper.png" alt="drawing of paper">
+//   </section>`
+//   } else {
+//     difficultBoard.innerHTML =
+//     `<section class = "difficult-board">
+//           <img class="rock icon" id="rock" src="assets/rock.png" alt="drawing of rocks">
+//           <img class="scissors icon" id="scissors" src="assets/scissors.png" alt="drawing of scissors">
+//           <img class="paper icon" id="paper" src="assets/paper.png" alt="drawing of paper">
+//           <img class="alien icon" id="alien" src="assets/alien.png" alt="drawing of alien">
+//           <img class="lizard icon" id="lizard" src="assets/lizard.png" alt="drawing of lizard"></img>`
+//   }
+  // iconsView.innerHTML = `
+  // <img class="rock icon " id="rock" src="assets/rock.png" alt="drawing of rocks">
+  // <img class="scissors icon " id="scissors" src="assets/scissors.png" alt="drawing of scissors">
+  // <img class="paper icon " id="paper" src="assets/paper.png" alt="drawing of paper">
+  // <img class="alien icon hidden" id="alien" src="assets/alien.png" alt="drawing of alien">
+  // <img class="lizard icon hidden" id="lizard" src="assets/lizard.png" alt="drawing of lizard">`
