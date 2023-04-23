@@ -19,7 +19,7 @@ var paper = document.querySelector('.paper');
 var scissors = document.querySelector('.scissors');
 var lizard = document.querySelector('.lizard');
 var alien = document.querySelector('.alien');
-
+var trashTalkSection = document.querySelector('.trash-talk')
 //EVENT LISTENERS 
 window.addEventListener('load', createGame(gameBoardChoices));
 
@@ -71,8 +71,7 @@ var player1 = createPlayer('Human', '🫠')
 var player2 = createPlayer('Computer', '💻')
   var game = {
     player1:player1, 
-    player2:player2, 
-    // gameType:gameType, 
+    player2:player2,  
     gameBoardChoices: gameBoardChoices  
   }
   currentGame = game
@@ -82,17 +81,6 @@ var player2 = createPlayer('Computer', '💻')
 function getRandomIndex(iconArrays){
   return Math.floor(Math.random() * iconArrays.length);
 }
-
-// function getAllIcons(event){
-//   for(var i = 0; i < allIcons.length; i++) {
-//     allIcons[i] = event.target.id 
-//     allIcons[i].addEventListener('click', function(event){
-//       takeTurnClassic(event.target.id, classicIcons);
-//       takeTurnDifficult(event.target.id, difficultIcons)
-//     })
-//   }
-//   return allIcons[i]
-// }
 
 function takeTurnClassic(humanChoice, classicIcons) {
 gameBoardChoices = []
@@ -107,6 +95,7 @@ gameBoardChoices = []
 console.log(gameBoardChoices)
   displayPlayerChoices()
   determineWins()
+  displayWins()
   setTimeout(resetGame, 3000)
   }
 
@@ -122,8 +111,8 @@ gameBoardChoices = []
   }
   displayPlayerChoices()
   determineWins()
+  displayWins()
   setTimeout(resetGame, 3000)
-  
 }
 
 function determineRules(){
@@ -140,8 +129,9 @@ function determineWins(){
   if(currentGame.rules[`${gameBoardChoices[0]} > ${gameBoardChoices[1]}`]){
     console.log('player1 wins')
     currentGame.player1.wins += 1
+   console.log('WINNER', currentGame.winner = currentGame.player1.wins)
     gameStatus.innerText = 'Player 1 Wins 🫠'
-    winsPlayer1.innerText = `${currentGame.player1.wins}`
+    // winsPlayer1.innerText = `${currentGame.player1.wins}`
   } else if (gameBoardChoices[0] === gameBoardChoices[1]) {
     console.log('it is a draw')
     gameStatus.innerText = 'It\s a draw !'
@@ -149,7 +139,7 @@ function determineWins(){
     console.log('player2 wins')
     currentGame.player2.wins += 1
     gameStatus.innerText = 'Player 2 Wins 💻'
-    winsPlayer2.innerText = `${currentGame.player2.wins}`
+    // winsPlayer2.innerText = `${currentGame.player2.wins}`
   }
 }
 
@@ -203,14 +193,6 @@ function backtoHomePage(){
   hide(difficultBoard)
 }
 
-// function hideIcons(){
-//   hide(rock);
-//   hide(paper);
-//   hide(scissors);
-//   hide(alien);
-//   hide(lizard);
-// }
-
 function displayPlayerChoices(){
   changeGameBtn.disabled = true;
   for (var i = 0; i < allIcons.length; i++) {
@@ -224,7 +206,6 @@ function displayPlayerChoices(){
   `;
 }
 
-
 //DISABLE BUTTON DURING SHOWING THE CHOSEM ICONS 
 function resetGame(){
   changeGameBtn.disabled = false 
@@ -233,16 +214,12 @@ function resetGame(){
   show(rock);
   show(paper)
   show(scissors)
-// hide(lizard)
-//  hide(alien)
-//   console.log('classic reset')
-//  if(currentGame.gameType === 'difficult'){
-//     console.log('difficult resest')
-//     show(rock);
-//     show(paper)
-//     show(scissors)
   show(lizard)
   show(alien)
 }
-// }
 
+function displayWins(){
+  console.log('PLAYER 1 WINS', currentGame.player1.wins)
+  winsPlayer1.innerText = `${currentGame.player1.wins}`
+  winsPlayer2.innerText = `${currentGame.player2.wins}`
+}
