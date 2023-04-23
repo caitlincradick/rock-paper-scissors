@@ -4,12 +4,14 @@ var winsPlayer2 = document.querySelector('.wins-computer');
 var gameStatus = document.querySelector('.game-status');
 var changeGameBtn = document.querySelector('.change-game');
 var homeViewGameType = document.querySelector('.game-type');
+var classicBoard = document.querySelector('.classic-board');
+var difficultBoard = document.querySelector('.difficult-board')
 var bothButtonsHomeView = document.querySelector('.buttons');
-var choices = document.querySelector('.selected-icons')
+var selectedIcons = document.querySelector('.selected-icons')
 var choiceHuman = document.getElementById('choiceHuman');
 var choiceComputer = document.getElementById('choiceComputer');
 var classicBtn = document.querySelector('.classic-btn');
-var difficultBtn = document.querySelector('.difficult-btn')
+var difficultBtn = document.querySelector('.difficult-btn');
 var iconsView = document.querySelector('.icons');
 var allIcons = document.querySelectorAll('img');
 var icon = document.querySelector('.icon')
@@ -24,6 +26,7 @@ window.addEventListener('load', createGame(gameBoardChoices));
 
 classicBtn.addEventListener('click', function(event) {
   showClassicGameBoard();
+  // getAllIcons(event)
   determineGameType(event);
   setTimeout(resetGame, 2000)
 });
@@ -39,7 +42,7 @@ rock.addEventListener('click', function(event) {
   getAllIcons(event)
   determineGameType(event)
   takeTurnClassic(event.target.id, classicIcons);
-  // displayPlayerChoices()
+  displayPlayerChoices()
 })
 
 paper.addEventListener('click', function(event) {
@@ -200,13 +203,9 @@ function showClassicGameBoard(){
   if(!homeViewGameType.classList.contains('hidden')){
     hide(classicBtn);
     hide(difficultBtn);
-    show(iconsView);
+    show(iconsView)
+    show(classicBoard);
     show(changeGameBtn);
-    show(rock);
-    show(paper);
-    show(scissors);
-    hide(alien);
-    hide(lizard);
     gameStatus.innerText = 'Choose your fighter !'
   }
 }
@@ -228,6 +227,7 @@ function backtoHomePage(){
   show(difficultBtn);
   hide(changeGameBtn);
   hide(iconsView);
+  hide(classicBoard);
 }
 
 function hideIcons(){
@@ -246,7 +246,7 @@ function displayPlayerChoices(){
   }
   console.log(currentGame.player1.choice)
   console.log(currentGame.player2.choice)
-  choices.innerHTML = `
+  selectedIcons.innerHTML = `
   <img src="assets/${currentGame.player1.choice}.png" alt="drawing of rocks"/>
   <img src="assets/${currentGame.player2.choice}.png"/>
   `;
