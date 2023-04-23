@@ -13,35 +13,43 @@
       <section class="left-player">
         <div class="player-token">🫠</div>
         <h1 class="player-names">human</h1>
-        <h2 class="wins">Wins:0</h2>
+        <h2 class="wins wins-human">Wins:0</h2>
       </section>
       <section class="game-board">
-        <h1 class="game-board-heading">Rock, Paper, Scissors</h1>
-        <h2 class="game-status">It's a draw</h2>
-        <button>Change Game ?</button>
-        <section class="icons">
-          <img class="rock" id="rock" src="assets/black-and-white-rocks.png" alt="drawing of rocks">
-          <img class="scissors" id="scissors" src="assets/black-and-white-scissors.png" alt="drawing of scissors">
-          <img class="paper" id="paper" src="assets/black-and-white-paper.png" alt="drawing of paper">
-          <img class="alien" id="alien" src="assets/black-and-white-alien.png" alt="drawing of alien">
-          <img class="lizard" id="lizard" src="assets/favpng_salamander-lizard-clip-art.png" alt="drawing of lizard">
+        <h1 class="game-board-heading">It's Rock, Paper, Scissors y'all</h1>
+        <h2 class="game-status">Choose your Game !</h2>
+        <button class = "change-game hidden">Change Game ?</button>
+      <section class="icons hidden">
+        <section class ="classic-board hidden">
+          <img class="rock icon" id="rock" src="assets/rock.png" alt="drawing of rocks">
+          <img class="scissors icon " id="scissors" src="assets/scissors.png" alt="drawing of scissors">
+          <img class="paper icon " id="paper" src="assets/paper.png" alt="drawing of paper">
         </section>
-        <section class="game-type  hidden ">
-          <div class="classic box">
-            <p class="classic-game-win">classic rock>scissors paper>rock scissors>paper</p>
-          </div>
-          <div class="difficult box">
-            <p class="difficult-game-win">difficult</p>
-          </div>
+        <section class = "difficult-board hidden">
+          <img class="alien icon " id="alien" src="assets/alien.png" alt="drawing of alien">
+          <img class="lizard icon" id="lizard" src="assets/lizard.png" alt="drawing of lizard">
         </section>
+      <section class = 'selected-icons'></section>
+    </section>
+        <section class="game-type">
+          <button class="classic-btn buttons"> 
+            <h1>Classic</h1>
+            <p class="classic-game-win">rock > scissors <br> paper > rock <br> scissors > paper </p>
+          </button>
+          <button class="difficult-btn buttons">
+            <h1>Difficult</h1>
+            <p class="difficult-game-win">rock > scissors & lizard <br> paper > rock & alien <br> scissors > paper & lizard <br> lizard > paper & alien <br> alien > scissors & rock </p></p>
+          </button>
+        </section>
+        <section class="trash-talk"></section>
       </section>
       <section class="right-player">
         <div class="player-token">💻</div>
         <h1 class="player-names">computer</h1>
-        <h2 class="wins">Wins:0</h2>
+        <h2 class="wins wins-computer">Wins:0</h2>
       </section>  
-    </main>
-      <script src="winConditions.js"></script>
       <script src="main.js"></script>
+      <script src="DOM.js"></script>
+      <script src="winConditions.js"></script>
   </body>
 </html>
