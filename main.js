@@ -212,6 +212,7 @@ function backtoHomePage(){
 // }
 
 function displayPlayerChoices(){
+  changeGameBtn.disabled = true;
   for (var i = 0; i < allIcons.length; i++) {
     hide(allIcons[i]);
   }
@@ -223,7 +224,10 @@ function displayPlayerChoices(){
   `;
 }
 
+
+//DISABLE BUTTON DURING SHOWING THE CHOSEM ICONS 
 function resetGame(){
+  changeGameBtn.disabled = false 
   gameStatus.innerText = 'Choose your fighter !'
   selectedIcons.innerHTML = ''
   show(rock);
