@@ -17,7 +17,7 @@ function createPlayer (name, token) {
 
 function createGame(gameBoardChoices) {
   var player1 = createPlayer('Human', '🫠');
-  var player2 = createPlayer('Computer', '💻');
+  var player2 = createPlayer('Computer', '👾');
     var game = {
       player1:player1, 
       player2:player2,  

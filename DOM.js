@@ -91,7 +91,7 @@ function backtoHomePage() {
   hide(changeGameBtn);
   hide(iconsView);
   hide(classicBoard);
-  hide(difficultBoard)
+  hide(difficultBoard);
 };
 
 function displayPlayerChoices() {
@@ -120,9 +120,9 @@ function displayPlayerData() {
   winsPlayer1.innerText = `${currentGame.player1.wins}`
   winsPlayer2.innerText = `${currentGame.player2.wins}`
   if (currentGame.player1.winner){
-    gameStatus.innerText = 'Human 🫠 beats 💻';
+    gameStatus.innerText = 'Human 🫠 beats 👾';
   } else if (currentGame.player2.winner) {
-    gameStatus.innerText = 'Computer 💻 beats 🫠 ';
+    gameStatus.innerText = 'Computer 👾 beats 🫠 ';
   } else {
     gameStatus.innerText = 'It\s a draw, y\'all !';
   }
