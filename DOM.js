@@ -17,7 +17,6 @@ var scissors = document.querySelector('#scissors');
 var lizard = document.querySelector('#lizard');
 var alien = document.querySelector('#alien');
 
-
 //EVENT LISTENERS 
 window.addEventListener('load', createGame(gameBoardChoices));
 
@@ -30,7 +29,6 @@ difficultBtn.addEventListener('click', function(event) {
   currentGame.gameType = 'difficult'
   showDifficultGameBoard();
 });
-
 
 [rock, paper, scissors, alien, lizard].forEach((iconChoice) => {
 iconChoice.addEventListener('click', (event) => {
@@ -122,10 +120,10 @@ function displayPlayerData() {
   winsPlayer1.innerText = `${currentGame.player1.wins}`
   winsPlayer2.innerText = `${currentGame.player2.wins}`
   if (currentGame.player1.winner){
-    gameStatus.innerText = 'Player 1 Wins 🫠';
+    gameStatus.innerText = 'Human 🫠 beats 💻';
   } else if (currentGame.player2.winner) {
-    gameStatus.innerText = 'Player 2 Wins 💻';
+    gameStatus.innerText = 'Computer 💻 beats 🫠 ';
   } else {
-    gameStatus.innerText = 'It\s a draw !';
+    gameStatus.innerText = 'It\s a draw, y\'all !';
   }
 };

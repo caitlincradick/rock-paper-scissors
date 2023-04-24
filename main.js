@@ -1,12 +1,10 @@
-//DATA MODEL 
-
 //GLOBAL VARIABLES
 var classicIcons = ['rock', 'paper', 'scissors'];
 var difficultIcons = ['rock', 'paper', 'scissors', 'alien', 'lizard'];
 var gameBoardChoices = [];
 var currentGame;
 
-
+//DATA MODEL FUNCTIONS
 function createPlayer (name, token) {
   var player = {
     name: name,
