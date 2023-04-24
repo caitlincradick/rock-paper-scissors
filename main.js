@@ -1,4 +1,4 @@
-//DATA MODEL
+//DATA MODEL 
 
 //GLOBAL VARIABLES
 var classicIcons = ['rock', 'paper', 'scissors'];

@@ -3,9 +3,10 @@
   color:black;
   font-weight: 50;
   box-sizing: border-box;
-  /* border:solid black 3px */
   }
 
+/* GENERAL */
+ 
 body{
   margin: 0%
 }
@@ -20,6 +21,7 @@ main {
 }
 
 /*HEADERS*/
+
 .player-names, .game-status {
   font-size: 30px;
   margin-top: 0;
@@ -39,6 +41,7 @@ main {
 }
 
 /*GAME BOARD*/
+
 .game-board {
   display: flex;
   flex-direction: column;
@@ -53,7 +56,6 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  /* border:solid black 2px; */
   width: 250px;
   height: 500px;
 }
@@ -98,12 +100,9 @@ main {
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  /* border:solid black; */
   margin-top: 25px;
   height: 400px;
-  width:500px
-
-  
+  width:500px 
 }
 
 img {
@@ -111,7 +110,6 @@ img {
   width:150px;
   margin-top:0;
 }
-
 
 .hidden{
   display:none

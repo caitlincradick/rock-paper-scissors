@@ -135,30 +135,4 @@ function updateWins(){
   } else {
     gameStatus.innerText = 'It\s a draw !'
   }
-  // displayAll()
 }
-
-// function displayPlayer1Won(){
-//   console.log('display winner 1')
-//   if(currentGame.player1.winner){
-//     gameStatus.innerText = 'Player 1 Wins 🫠'
-//   } 
-// }
-
-// function displayPlayer2Won(){
-//   if(currentGame.player2.winner) {
-//     gameStatus.innerText = 'Player 2 Wins 💻'
-//   } 
-// }
-
-// function displayDraw(){
-//   if(!currentGame.player.winner && !currentGame.player2.winner){
-//     gameStatus.innerText = 'It\s a draw!'
-//   }
-// }
-
-// function displayAll(){
-//   displayPlayer1Won()
-//   displayPlayer2Won()
-//   displayDraw()
-// }
