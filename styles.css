@@ -15,14 +15,17 @@ main {
   display: flex;
 }
 
-.classic-btn:hover, .difficult-btn:hover, .change-game:hover, img:hover {
+button:hover, 
+img:hover {
   cursor: pointer;
-  transform: scale(1.1);
+  transform: scale(1.1); 
 }
+
 
 /*HEADERS*/
 
-.player-names, .game-status {
+.player-names, 
+.game-status {
   font-size: 30px;
   margin-top: 0;
   color:black
@@ -60,24 +63,32 @@ main {
   height: 500px;
 }
 
-.classic-btn, .difficult-btn {
+button {
+  background-color:#fde7d2;
+}
+
+.classic-btn, 
+.difficult-btn {
   height: 225px; 
   width: 250px;
   border: black solid .5px;
   margin-top: 5%;
-  background-color:#fde7d2;
   font-size:large;
   border-radius: 55%;
 }
 
 .change-game { 
-  background-color: rgb(250, 188, 164);
   border-radius: 80%;
   width: 125px;
   height: 55px;
 }
 
-.left-player, .right-player {
+.change-game:active:enabled {
+  cursor: pointer;
+}
+
+.left-player, 
+.right-player {
   display: flex;
   flex-direction: column;
   justify-content:flex-start;
@@ -88,6 +99,7 @@ main {
 }
 
 /*PLAYERS */
+
 .player-token {
   height: 50px;
   width: 50px;
@@ -95,6 +107,7 @@ main {
 }
 
 /* ICONS */
+
 .icons {
   display:flex; 
   align-items: center;

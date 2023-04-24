@@ -14,12 +14,12 @@ var classicBtn = document.querySelector('.classic-btn');
 var difficultBtn = document.querySelector('.difficult-btn');
 var iconsView = document.querySelector('.icons');
 var allIcons = document.querySelectorAll('.icon');
-var rock = document.querySelector('.rock');
-var paper = document.querySelector('.paper');
-var scissors = document.querySelector('.scissors');
-var lizard = document.querySelector('.lizard');
-var alien = document.querySelector('.alien');
-var trashTalkSection = document.querySelector('.trash-talk')
+var rock = document.querySelector('#rock');
+var paper = document.querySelector('#paper');
+var scissors = document.querySelector('#scissors');
+var lizard = document.querySelector('#lizard');
+var alien = document.querySelector('#alien');
+
 
 //EVENT LISTENERS 
 window.addEventListener('load', createGame(gameBoardChoices));
