@@ -64,11 +64,19 @@ main {
 }
 
 .classic-btn, .difficult-btn {
-  height: 200px; 
+  height: 225px; 
   width: 250px;
-  border: none;
-  background-color:azure;
+  border: black solid .5px;
+  margin-top: 5%;
+  background-color:#fde7d2;
   font-size:large;
+  border-radius: 55%;
+}
+.change-game { 
+  background-color: rgb(250, 188, 164);
+  border-radius: 80%;
+  width: 125px;
+  height: 55px;
 }
 
 /*PLAYERS */

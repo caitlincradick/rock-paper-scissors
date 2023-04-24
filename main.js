@@ -46,8 +46,8 @@ gameBoardChoices = []
 console.log(gameBoardChoices)
   displayPlayerChoices()
   determineWins()
-  displayWins()
-  setTimeout(resetGame, 3000)
+  updateWins()
+  setTimeout(resetGame, 2000)
   }
 
 function takeTurnDifficult(humanChoice, difficultIcons) {
@@ -60,10 +60,11 @@ gameBoardChoices = []
     currentGame.player2.choice = difficultIcons[getRandomIndex(difficultIcons)]
     gameBoardChoices.push(currentGame.player2.choice)  
   }
+  console.log(gameBoardChoices)
   displayPlayerChoices()
   determineWins()
-  displayWins()
-  setTimeout(resetGame, 3000)
+  updateWins()
+  setTimeout(resetGame, 2000)
 }
 
 function determineRules(){
@@ -80,15 +81,17 @@ function determineWins(){
   if(currentGame.rules[`${gameBoardChoices[0]} > ${gameBoardChoices[1]}`]){
     console.log('player1 wins')
     currentGame.player1.wins += 1
-   currentGame.player1.winner = true
+   currentGame.player1.winner = true;
+   currentGame.player2.winner = false;
   } else if (gameBoardChoices[0] === gameBoardChoices[1]) {
     console.log('it is a draw')
     currentGame.player1.winner = false;
     currentGame.player2.winner = false;
-  } else if(!currentGame.rules[`${gameBoardChoices[0]} > ${gameBoardChoices[1]}`]){
+  } else { 
     console.log('player2 wins')
     currentGame.player2.wins += 1
-    currentGame.player2.winner = true
+    currentGame.player2.winner = true;
+    currentGame.player1.winner = false;
   }
 }
 

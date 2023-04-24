@@ -37,7 +37,6 @@ difficultBtn.addEventListener('click', function(event) {
 
 [rock, paper, scissors, alien, lizard].forEach((iconChoice)=>{
   iconChoice.addEventListener('click', (event)=> {
-console.log('for each')
 if(currentGame.gameType === 'classic'){
 takeTurnClassic(event.target.id, classicIcons);
 } else if (currentGame.gameType === 'difficult') {
@@ -125,14 +124,41 @@ function resetGame(){
   show(alien)
 }
 
-function displayWins(){
+function updateWins(){
   winsPlayer1.innerText = `${currentGame.player1.wins}`
   winsPlayer2.innerText = `${currentGame.player2.wins}`
-  if(currentGame.player1.winner && !currentGame.player2.winner){
+  if(currentGame.player1.winner){
+    console.log(currentGame)
     gameStatus.innerText = 'Player 1 Wins 🫠'
-  } else if(!currentGame.player1.winner && !currentGame.player2.winner){
-    gameStatus.innerText = 'It\s a draw !'
-  } else if (currentGame.player2.winner && !currentGame.player1.winner) {
+  } else if (currentGame.player2.winner) {
     gameStatus.innerText = 'Player 2 Wins 💻'
+  } else {
+    gameStatus.innerText = 'It\s a draw !'
   }
+  // displayAll()
 }
+
+// function displayPlayer1Won(){
+//   console.log('display winner 1')
+//   if(currentGame.player1.winner){
+//     gameStatus.innerText = 'Player 1 Wins 🫠'
+//   } 
+// }
+
+// function displayPlayer2Won(){
+//   if(currentGame.player2.winner) {
+//     gameStatus.innerText = 'Player 2 Wins 💻'
+//   } 
+// }
+
+// function displayDraw(){
+//   if(!currentGame.player.winner && !currentGame.player2.winner){
+//     gameStatus.innerText = 'It\s a draw!'
+//   }
+// }
+
+// function displayAll(){
+//   displayPlayer1Won()
+//   displayPlayer2Won()
+//   displayDraw()
+// }
