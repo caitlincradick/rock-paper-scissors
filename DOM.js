@@ -36,7 +36,7 @@ difficultBtn.addEventListener('click', function(event) {
 
 
 [rock, paper, scissors, alien, lizard].forEach((iconChoice)=>{
-  iconChoice.addEventListener('click', (event)=> {
+iconChoice.addEventListener('click', (event)=> {
 if(currentGame.gameType === 'classic'){
 takeTurnClassic(event.target.id, classicIcons);
 } else if (currentGame.gameType === 'difficult') {
@@ -48,7 +48,6 @@ takeTurnClassic(event.target.id, classicIcons);
 changeGameBtn.addEventListener('click', function () {
   backtoHomePage();
 })
-
 
 //DOM FUNCTIONS
 function show(element) {
@@ -105,11 +104,9 @@ function displayPlayerChoices(){
   for (var i = 0; i < allIcons.length; i++) {
     hide(allIcons[i]);
   }
-  console.log(currentGame.player1.choice)
-  console.log(currentGame.player2.choice)
   selectedIcons.innerHTML = `
-  <img src="assets/${currentGame.player1.choice}.png" alt="drawing of rocks"/>
-  <img src="assets/${currentGame.player2.choice}.png"/>
+  <img src="assets/${currentGame.player1.choice}.png" alt="${currentGame.player1.choice}"/>
+  <img src="assets/${currentGame.player2.choice}.png" alt=${currentGame.player2.choice}/>
   `;
 }
 
@@ -124,11 +121,10 @@ function resetGame(){
   show(alien)
 }
 
-function updateWins(){
+function displayPlayerData(){
   winsPlayer1.innerText = `${currentGame.player1.wins}`
   winsPlayer2.innerText = `${currentGame.player2.wins}`
   if(currentGame.player1.winner){
-    console.log(currentGame)
     gameStatus.innerText = 'Player 1 Wins 🫠'
   } else if (currentGame.player2.winner) {
     gameStatus.innerText = 'Player 2 Wins 💻'
