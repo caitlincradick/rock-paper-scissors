@@ -6,13 +6,6 @@
   /* border:solid black 3px */
   }
 
- /* COLORS
-background: #1c1124; black 
-background: #693e52; maroon
-background: #74b49b; light green
-background: #a7d7c5; ligther green */
-
-/*GENERAL*/
 body{
   margin: 0%
 }
@@ -26,7 +19,7 @@ main {
   flex-direction: column;
   justify-content:flex-start;
   align-items: center;
-  background-color:#a7d7c5;  
+  background-color:rgb(203, 246, 244);  
   height: 100vh;
   width: 20%;
 }
@@ -35,18 +28,18 @@ main {
 .player-names, .game-status {
   font-size: 30px;
   margin-top: 0;
-  color:white
+  color:black
 }
 
 .wins {
   font-size: 20px;
   margin-top:0;
-  color:maroon;
+  color:#AD343E;
 }
 
 .game-board-heading{
   font-size: 50px;
-  color:maroon;
+  color:#AD343E;
   margin-bottom: 2px;
 }
 
@@ -55,7 +48,7 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #74b49b;;
+  background-color:rgb(218, 255, 255);
   height:100vh; 
   width: 60%;
 }
