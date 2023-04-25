@@ -8,7 +8,7 @@ This application is an online game of rock, paper, scissors with the user playin
 4. Open the app in VS Code or code editor, open the browswer by running open index.html
 
 ## Preview of App:
-
+![rock paper scissors](https://user-images.githubusercontent.com/119264690/234161550-a71eaa10-274a-4b05-b184-f964cb86bf69.gif)
 
 ## Context:
 The project was assigned on 4/18. I am repeating Mod1 and am on the last week of the inning. 
